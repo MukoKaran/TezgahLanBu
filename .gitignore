@@ -1,0 +1,12 @@
+.worktrees/
+.superpowers/
+Library/
+Temp/
+Logs/
+obj/
+.vs/
+.vscode/
+*.csproj
+*.sln
+__pycache__/
+*.py[cod]
