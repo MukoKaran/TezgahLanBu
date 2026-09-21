@@ -169,9 +169,14 @@ class ProjectMetadataTests(unittest.TestCase):
     def test_manifest_is_valid_json(self):
         manifest = json.loads(read("Packages/manifest.json"))
         self.assertEqual("2.0.0", manifest["dependencies"]["com.unity.ugui"])
-        for removed in ("com.unity.analytics", "com.unity.package-manager-ui", "com.unity.textmeshpro"):
+        for removed in (
+            "com.unity.analytics",
+            "com.unity.package-manager-ui",
+            "com.unity.textmeshpro",
+            "com.unity.modules.vr",
+        ):
             self.assertNotIn(removed, manifest["dependencies"])
-        modules = "ai animation assetbundle audio cloth director imageconversion imgui jsonserialize particlesystem physics physics2d screencapture terrain terrainphysics tilemap ui uielements umbra unityanalytics unitywebrequest unitywebrequestassetbundle unitywebrequestaudio unitywebrequesttexture unitywebrequestwww vehicles video vr wind xr".split()
+        modules = "ai animation assetbundle audio cloth director imageconversion imgui jsonserialize particlesystem physics physics2d screencapture terrain terrainphysics tilemap ui uielements umbra unityanalytics unitywebrequest unitywebrequestassetbundle unitywebrequestaudio unitywebrequesttexture unitywebrequestwww vehicles video wind xr".split()
         for module in modules:
             self.assertEqual("1.0.0", manifest["dependencies"].get(f"com.unity.modules.{module}"), module)
 
