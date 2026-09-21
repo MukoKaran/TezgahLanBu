@@ -153,6 +153,11 @@ class ProjectLayoutTests(unittest.TestCase):
         for name in ("Library", "Temp", "Logs", "obj"):
             self.assertFalse((ROOT / name).exists(), name)
 
+    def test_unused_textmesh_pro_examples_are_excluded(self):
+        examples = ROOT / "Assets/TextMesh Pro/Examples & Extras"
+        self.assertFalse(examples.exists(), examples.relative_to(ROOT))
+        self.assertFalse(Path(f"{examples}.meta").exists(), f"{examples.relative_to(ROOT)}.meta")
+
     def test_project_version_is_readable(self):
         self.assertTrue(read("ProjectSettings/ProjectVersion.txt").strip())
 
